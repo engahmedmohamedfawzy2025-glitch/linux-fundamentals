@@ -1,107 +1,169 @@
-Linux Fundamentals Documentation
+# Linux Fundamentals Documentation
 
-This document contains clear and practical notes covering essential Linux administration skills.
-It is designed to help you revise, practice, and build a strong foundation.
+Clear and practical notes covering essential Linux administration skills.
 
-📁 1. Linux File System & Navigation
-1.1 Linux Directory Structure
-Directory	Description
-/	Root directory of the entire system
-/home	User home directories
-/etc	Configuration files for services and system
-/var	Logs and variable data (changes often)
-/bin	Essential user commands (ls, cp, rm…)
-/usr	User programs, binaries, and libraries
-/opt	Optional third-party software
-1.2 Basic Navigation Commands
-ls              # list files
-ls -l           # long detailed list
-ls -a           # show hidden files
-cd /path        # change directory
-cd ..           # go up one directory
-pwd             # show current directory path
+---
 
-1.3 File Operations
-cp file1 file2          # copy file
-mv file1 file2          # move/rename file
-rm file.txt             # delete file
-rm -r folder            # remove directory recursively
-mkdir newfolder         # create folder
-touch newfile           # create empty file
+## 1. Linux File System & Navigation
 
-1.4 Viewing File Content
+### Linux Directory Structure
+
+| Directory | Description                   |
+| --------- | ----------------------------- |
+| `/`       | Root directory                |
+| `/home`   | User home directories         |
+| `/etc`    | System configuration files    |
+| `/var`    | Logs and variable data        |
+| `/bin`    | Essential user commands       |
+| `/usr`    | User programs and libraries   |
+| `/opt`    | Optional third-party software |
+
+---
+
+### Basic Navigation Commands
+
+```bash
+ls
+ls -l
+ls -a
+cd /path
+cd ..
+pwd
+```
+
+---
+
+### File Operations
+
+```bash
+cp file1 file2
+mv file1 file2
+rm file.txt
+rm -r folder
+mkdir newfolder
+touch newfile
+```
+
+---
+
+### Viewing File Content
+
+```bash
 cat file.txt
 head file.txt
 tail file.txt
-tail -f /var/log/syslog     # live log view
-less file.txt               # scroll through file
+tail -f /var/log/syslog
+less file.txt
+```
 
-👤 2. User & Group Management
-2.1 Create, Modify, Delete Users
+---
+
+## 2. User & Group Management
+
+### User Management
+
+```bash
 sudo useradd username
-sudo passwd username            # set password
+sudo passwd username
 sudo userdel username
-sudo userdel -r username        # delete with home directory
+sudo userdel -r username
+```
 
-2.2 Group Management
+---
+
+### Group Management
+
+```bash
 sudo groupadd devops
-sudo gpasswd -a user devops     # add user to group
-groups username                 # view user groups
+sudo gpasswd -a user devops
+groups username
+```
 
-2.3 Modify User Properties
-sudo usermod -aG sudo username   # add to sudo group
-sudo usermod -d /new/home user   # change home directory
+---
 
-🔐 3. Permissions & Ownership
-3.1 Permission Types
-Symbol	Meaning
-r	Read
-w	Write
-x	Execute
-3.2 Numeric Permission Values
-Permission	Value
-r	4
-w	2
-x	1
-3.3 Examples Using chmod
-chmod 755 file    # rwx r-x r-x
-chmod 644 file    # rw- r-- r--
-chmod 700 file    # rwx --- ---
-chmod 600 file    # rw- --- ---
+### Modify User Properties
 
-3.4 Change File Ownership
+```bash
+sudo usermod -aG sudo username
+sudo usermod -d /new/home user
+```
+
+---
+
+## 3. Permissions & Ownership
+
+### Permission Types
+
+| Symbol | Meaning |
+| ------ | ------- |
+| r      | Read    |
+| w      | Write   |
+| x      | Execute |
+
+---
+
+### Numeric Permission Values
+
+| Permission | Value |
+| ---------- | ----- |
+| r          | 4     |
+| w          | 2     |
+| x          | 1     |
+
+---
+
+### chmod Examples
+
+```bash
+chmod 755 file
+chmod 644 file
+chmod 700 file
+chmod 600 file
+```
+
+---
+
+### Change Ownership
+
+```bash
 sudo chown user file
 sudo chown user:group file
+```
 
-🔧 4. Managing Services (systemctl)
-4.1 Basic Service Commands
+---
+
+## 4. Managing Services (systemctl)
+
+```bash
 sudo systemctl start nginx
 sudo systemctl stop nginx
 sudo systemctl restart nginx
 sudo systemctl status nginx
-
-4.2 Enable or Disable Services at Boot
 sudo systemctl enable nginx
 sudo systemctl disable nginx
+```
 
-🌐 5. Networking Basics
-5.1 Check Network Interfaces
+---
+
+## 5. Networking Basics
+
+```bash
 ip a
-
-5.2 View Routing Table
 ip r
-
-5.3 Test Connectivity
 ping 8.8.8.8
 ping google.com
-
-5.4 Check Listening Ports
 ss -tulnp
+```
 
-🖥️ 6. System Monitoring Commands
-top             # CPU and memory usage
-htop            # advanced monitor (if installed)
-df -h           # disk usage
-du -sh *        # folder sizes
-free -h         # RAM usage
-uptime          # load average
+---
+
+## 6. System Monitoring
+
+```bash
+top
+htop
+df -h
+du -sh *
+free -h
+uptime
+```
